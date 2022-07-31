@@ -2,11 +2,11 @@ package tpfinal;
 
 public class Estacion {
     private String nombre;
-    private Domicilio domicilio;
+    private String domicilio;
     private int cantVias;
     private int cantPlataformas;
     
-    public Estacion(String nombre, Domicilio domicilio, int cantVias, int cantPlataformas){
+    public Estacion(String nombre, String domicilio, int cantVias, int cantPlataformas){
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.cantVias = cantVias;
@@ -17,7 +17,7 @@ public class Estacion {
         return this.nombre;
     }
     
-    public Domicilio getDomicilio(){
+    public String getDomicilio(){
         return this.domicilio;
     }
     
@@ -29,7 +29,7 @@ public class Estacion {
         return this.cantPlataformas;
     }
     
-    public void setDomicilio(Domicilio domicilio){
+    public void setDomicilio(String domicilio){
         this.domicilio = domicilio;
     }
     
@@ -42,6 +42,6 @@ public class Estacion {
     }
     
     public String toString(){
-        return "E;"+nombre+";"+domicilio.toString()+";"+cantVias+";"+cantPlataformas;
+        return nombre+";"+domicilio.toString()+";"+cantVias+";"+cantPlataformas;
     }
 }

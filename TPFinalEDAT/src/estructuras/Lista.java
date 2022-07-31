@@ -146,7 +146,7 @@ public class Lista {
             if (i == 1) {
                 toString = toString + aux.getElemento().toString();
             } else {
-                toString = toString + "," + aux.getElemento().toString();
+                toString = toString + ", " + aux.getElemento().toString();
             }
             aux = aux.getEnlace();
         }

@@ -15,6 +15,11 @@ public class Tren {
         this.linea = linea;
     }
     
+    @Override
+    public String toString(){
+        return id+";"+tipoPropulsion+";"+cantVagonesPas+";"+cantVagonesCarga+";"+linea;
+    }
+    
     public int getId(){
         return this.id;
     }

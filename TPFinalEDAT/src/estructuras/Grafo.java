@@ -11,14 +11,16 @@ public class Grafo {
     
     public Lista caminoMasCorto(Object origen, Object destino){
         Lista ls = new Lista();
-        ls.agregarElem(origen, ls.longitud()+1);
+        ls.agregarElem(origen, 1);
         
         return ls;
     }
     
-    private void caminoMasCortoPR(NodoVert nodo, Lista ls){
+    private void caminoMasCortoPR(NodoVert nodo, Object destino, Lista ls){
         if (nodo != null) {
-            
+            if (nodo.getElem().equals(destino)) {
+                
+            }
         }
     }
     

@@ -7,7 +7,11 @@ public class DiccionarioAVL {
     public DiccionarioAVL() {
         this.raiz = null;
     }
-
+    
+    public boolean esVacio(){
+        return this.raiz == null;
+    }
+    
     private int balance(NodoDiccAVL nodo) {
         int altIzq = -1;
         int altDer = -1;
@@ -21,8 +25,15 @@ public class DiccionarioAVL {
         return altIzq - altDer;
     }
     
-    public Object obtenerDato(Comparable clave){
-        return obtenerNodo(this.raiz, clave).getDato();
+    public Object obtenerInformacion(Comparable clave){
+        NodoDiccAVL nodo = obtenerNodo(this.raiz, clave);
+        Object retorno;
+        if (nodo != null) {
+            retorno = nodo.getDato();
+        }else{
+            retorno = null;
+        }
+        return retorno;
     }
     
     private NodoDiccAVL obtenerNodo(NodoDiccAVL nodo, Comparable elem) {
@@ -174,6 +185,7 @@ public class DiccionarioAVL {
             h.recalcularAltura();
             r.recalcularAltura();
         }
+        String line;
         return h;
     }
 
