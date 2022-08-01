@@ -98,11 +98,13 @@ public class DiccionarioAVL {
     }
 
     private void balancearRaiz(NodoDiccAVL nodo, int balance) {
+        int balanceAux;
         switch (balance) {
             default:
                 break;
             case -2:
-                if (balance(nodo.getDerecho()) == -1) {
+                balanceAux = balance(nodo.getDerecho());
+                if (balanceAux == -1 || balanceAux == 0) {
                     //balance simple por izquierda
                     rotacionIzq(null, nodo);
                 } else {
@@ -112,7 +114,8 @@ public class DiccionarioAVL {
                 }
                 break;
             case 2:
-                if (balance(nodo.getIzquierdo()) == 1) {
+                balanceAux = balance(nodo.getIzquierdo());
+                if (balanceAux == 1 || balanceAux == 0) {
                     //balance simple por derecha
                     rotacionDer(null, nodo);
                 } else {
@@ -125,11 +128,13 @@ public class DiccionarioAVL {
     }
     
     private void balancear(NodoDiccAVL padre, NodoDiccAVL nodo, int balance) {
+        int balanceAux;
         switch (balance) {
             default:
                 break;
             case -2:
-                if (balance(nodo.getDerecho()) == -1) {
+                balanceAux = balance(nodo.getDerecho());
+                if (balanceAux == -1 || balanceAux == 0) {
                     //balance simple por izquierda
                     if (padre.getClave().compareTo(nodo.getClave()) < 0) {
                         padre.setDerecho(rotacionIzq(padre, nodo));
@@ -147,7 +152,8 @@ public class DiccionarioAVL {
                 }
                 break;
             case 2:
-                if (balance(nodo.getIzquierdo()) == 1) {
+                balanceAux = balance(nodo.getIzquierdo()); 
+                if (balanceAux == 1 || balanceAux == 0) {
                     //balance simple por izquierda
                     if (padre.getClave().compareTo(nodo.getClave()) < 0) {
                         padre.setDerecho(rotacionDer(padre, nodo));
@@ -282,9 +288,6 @@ public class DiccionarioAVL {
                     aux = aux.getDerecho();
                 }
                 intercambiar(nodo, aux);
-                System.out.println(padreAux.getClave());
-                System.out.println(padreAux.getIzquierdo().getClave());
-                System.out.println(padreAux.getDerecho().getClave());
                 if (padreAux.getIzquierdo().getClave().compareTo(padreAux.getClave()) == 0) {
                     padreAux.setIzquierdo(null);
                 } else {
