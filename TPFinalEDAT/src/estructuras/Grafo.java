@@ -128,7 +128,17 @@ public class Grafo {
         }
         return aux;
     }
-
+    
+    public boolean modificarArco(Object origen, Object destino, int etiqueta){
+        boolean exito = false;
+        NodoAdy arco = ubicarArco(origen, destino);
+        if (arco != null) {
+            exito = true;
+            arco.setEtiqueta(etiqueta);
+        }
+        return exito;
+    }
+    
     private boolean insertarAdyacente(NodoVert a, NodoVert b, int etiqueta) {
         boolean exito = true;
         NodoAdy aux = a.getPrimerAdy();

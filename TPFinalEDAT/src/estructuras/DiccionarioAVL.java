@@ -7,11 +7,11 @@ public class DiccionarioAVL {
     public DiccionarioAVL() {
         this.raiz = null;
     }
-    
-    public boolean esVacio(){
+
+    public boolean esVacio() {
         return this.raiz == null;
     }
-    
+
     private int balance(NodoDiccAVL nodo) {
         int altIzq = -1;
         int altDer = -1;
@@ -24,18 +24,18 @@ public class DiccionarioAVL {
         }
         return altIzq - altDer;
     }
-    
-    public Object obtenerInformacion(Comparable clave){
+
+    public Object obtenerInformacion(Comparable clave) {
         NodoDiccAVL nodo = obtenerNodo(this.raiz, clave);
         Object retorno;
         if (nodo != null) {
             retorno = nodo.getDato();
-        }else{
+        } else {
             retorno = null;
         }
         return retorno;
     }
-    
+
     private NodoDiccAVL obtenerNodo(NodoDiccAVL nodo, Comparable elem) {
         NodoDiccAVL retorno = null;
         if (nodo != null) {
@@ -51,7 +51,7 @@ public class DiccionarioAVL {
         }
         return retorno;
     }
-    
+
     public boolean insertar(Comparable elem, Object dato) {
         boolean exito = true;
         if (this.raiz == null) {
@@ -88,7 +88,7 @@ public class DiccionarioAVL {
                 nodo.recalcularAltura();
                 if (padre != null) {
                     balancear(padre, nodo, balance(nodo));
-                }else{
+                } else {
                     balancearRaiz(nodo, balance(nodo));
                 }
             }
@@ -126,7 +126,7 @@ public class DiccionarioAVL {
                 break;
         }
     }
-    
+
     private void balancear(NodoDiccAVL padre, NodoDiccAVL nodo, int balance) {
         int balanceAux;
         switch (balance) {
@@ -152,7 +152,7 @@ public class DiccionarioAVL {
                 }
                 break;
             case 2:
-                balanceAux = balance(nodo.getIzquierdo()); 
+                balanceAux = balance(nodo.getIzquierdo());
                 if (balanceAux == 1 || balanceAux == 0) {
                     //balance simple por izquierda
                     if (padre.getClave().compareTo(nodo.getClave()) < 0) {
@@ -191,7 +191,6 @@ public class DiccionarioAVL {
             h.recalcularAltura();
             r.recalcularAltura();
         }
-        String line;
         return h;
     }
 
@@ -219,7 +218,16 @@ public class DiccionarioAVL {
     public boolean eliminar(Comparable elem) {
         boolean exito = true;
         if (this.raiz != null) {
-            exito = eliminarPR(null, this.raiz, elem);
+            if (this.raiz.getClave().equals(elem)) {
+                exito = true;
+                eliminarRaiz(determinarCaso(this.raiz));
+            } else {
+                exito = eliminarPR(null, this.raiz, elem);
+            }
+            if (exito) {
+                this.raiz.recalcularAltura();
+                balancearRaiz(this.raiz, balance(this.raiz));
+            }
         }
         return exito;
     }
@@ -235,6 +243,17 @@ public class DiccionarioAVL {
                     exito = eliminarPR(nodo, nodo.getIzquierdo(), elem);
                 } else {
                     exito = eliminarPR(nodo, nodo.getDerecho(), elem);
+                }
+            }
+            System.out.println("Exito: " + exito + " Nodo:" + nodo.getClave());
+            if (exito) {
+                nodo.recalcularAltura();
+                System.out.println("Nodo: " + nodo.getClave() + ", " + balance(nodo));
+                if (padre == null) {
+                    balancearRaiz(nodo, balance(nodo));
+                } else {
+                    padre.recalcularAltura();
+                    balancear(padre, nodo, balance(nodo));
                 }
             }
         }
@@ -263,35 +282,78 @@ public class DiccionarioAVL {
         return caso;
     }
 
-    private void eliminarSegunCaso(NodoDiccAVL padre, NodoDiccAVL nodo, int caso) {
-        System.out.println(caso);
+    private void eliminarRaiz(int caso) {
+        NodoDiccAVL nodo = this.raiz;
         switch (caso) {
             case 1:
-                padre.setIzquierdo(null);
-                padre.setDerecho(null);
+                this.raiz = null;
                 break;
             case 2:
-                if (nodo.getClave().compareTo(padre.getClave()) > 0) {
-                    padre.setDerecho(nodo.getDerecho());
+                if (nodo.getIzquierdo() != null) {
+                    this.raiz = nodo.getIzquierdo();
                 } else {
-                    padre.setDerecho(nodo.getIzquierdo());
+                    this.raiz = nodo.getDerecho();
                 }
                 break;
             case 3:
                 NodoDiccAVL padreAux = nodo;
-                NodoDiccAVL aux = nodo.getIzquierdo();
-                if (aux.getDerecho() != null) {
-                    padreAux = nodo.getIzquierdo();
-                }
-                while (aux.getDerecho() != null) {
-                    padreAux = nodo.getIzquierdo();
-                    aux = aux.getDerecho();
-                }
-                intercambiar(nodo, aux);
-                if (padreAux.getIzquierdo().getClave().compareTo(padreAux.getClave()) == 0) {
-                    padreAux.setIzquierdo(null);
+                NodoDiccAVL aux = nodo.getDerecho();
+                if (aux.getIzquierdo() == null) {
+                    intercambiar(nodo, aux);
+                    nodo.setDerecho(aux.getDerecho());
                 } else {
-                    padreAux.setDerecho(null);
+                    while (aux.getIzquierdo() != null) {
+                        padreAux = aux;
+                        aux = aux.getIzquierdo();
+                    }
+                    intercambiar(nodo, aux);
+                    padreAux.setIzquierdo(aux.getDerecho());
+                }
+                balancear(nodo, padreAux, balance(padreAux));
+                break;
+        }
+    }
+
+    private void eliminarSegunCaso(NodoDiccAVL padre, NodoDiccAVL nodo, int caso) {
+        switch (caso) {
+            //sin hijos
+            case 1:
+                if (nodo.getClave().compareTo(padre.getClave()) < 0) {
+                    padre.setIzquierdo(null);
+                } else {
+                    padre.setDerecho(null);
+                }
+                break;
+            //con un hijo
+            case 2:
+                if (nodo.getClave().compareTo(padre.getClave()) < 0) {
+                    if (nodo.getDerecho() != null) {
+                        padre.setIzquierdo(nodo.getDerecho());
+                    } else {
+                        padre.setIzquierdo(nodo.getIzquierdo());
+                    }
+                } else {
+                    if (nodo.getDerecho() != null) {
+                        padre.setDerecho(nodo.getDerecho());
+                    } else {
+                        padre.setDerecho(nodo.getIzquierdo());
+                    }
+                }
+                break;
+            //con dos hijos
+            case 3:
+                NodoDiccAVL padreAux = nodo;
+                NodoDiccAVL aux = nodo.getDerecho();
+                if (aux.getIzquierdo() == null) {
+                    intercambiar(nodo, aux);
+                    nodo.setDerecho(aux.getDerecho());
+                } else {
+                    while (aux.getIzquierdo() != null) {
+                        padreAux = aux;
+                        aux = aux.getIzquierdo();
+                    }
+                    intercambiar(nodo, aux);
+                    padreAux.setIzquierdo(aux.getDerecho());
                 }
                 break;
         }
@@ -299,6 +361,7 @@ public class DiccionarioAVL {
 
     private void intercambiar(NodoDiccAVL nodo1, NodoDiccAVL nodo2) {
         nodo1.setClave(nodo2.getClave());
+        nodo1.setDato(nodo2.getDato());
     }
 
     public boolean existeClave(Comparable elem) {
@@ -335,7 +398,7 @@ public class DiccionarioAVL {
         listarDatosPR(this.raiz, lista);
         return lista;
     }
-    
+
     private void listarDatosPR(NodoDiccAVL nodo, Lista temp) {
         if (nodo != null) {
             listarDatosPR(nodo.getIzquierdo(), temp);
@@ -343,13 +406,13 @@ public class DiccionarioAVL {
             listarDatosPR(nodo.getDerecho(), temp);
         }
     }
-    
+
     public Lista listarClaves() {
         Lista lista = new Lista();
         listarClavesPR(this.raiz, lista);
         return lista;
     }
-    
+
     private void listarClavesPR(NodoDiccAVL nodo, Lista temp) {
         if (nodo != null) {
             listarClavesPR(nodo.getIzquierdo(), temp);

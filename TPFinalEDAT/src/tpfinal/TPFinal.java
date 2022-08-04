@@ -17,7 +17,7 @@ public class TPFinal {
     private static Grafo conexionEstaciones = new Grafo();
     private static HashMap<String, Lista> lineaEstacion = new HashMap<>();
     private static Scanner sc = new Scanner(System.in, "ISO_8859_1");
-    
+
     //entrada y salida
     private static FileWriter salida;
     private static FileReader entrada;
@@ -40,15 +40,19 @@ public class TPFinal {
         //menu
         imprimirMenu();
         do {
+            int id;
+            Estacion estacion;
+            Tren tren;
+            int eleccion;
             System.out.println("Ingrese la opción deseada:");
             seleccion = sc.nextInt();
             switch (seleccion) {
                 case 1:
-                    Tren tren = pedirDatosTren();
+                    tren = pedirDatosTren();
                     insertarTren(tren);
                     break;
                 case 2:
-                    Estacion estacion = pedirDatosEstacion();
+                    estacion = pedirDatosEstacion();
                     insertarEstacion(estacion);
                     break;
                 case 3:
@@ -57,46 +61,69 @@ public class TPFinal {
                 case 4:
                     pedirDatosRiel();
                     break;
+                case 5:
+                    modificarTren(pedirDatosTrenMod());
+                    break;
+                case 6:
+                    modificarEstacion(pedirDatosEstacionMod());
+                    break;
+                case 7:
+                    modificarLinea();
+                    break;
+                case 8:
+                    pedirDatosRielMod();
+                    break;
+                case 9:
+
+                    break;
+                case 10:
+
+                    break;
+
+                case 11:
+
+                    break;
+                case 12:
+
+                    break;
+                case 13:
+                    tren = buscarTren();
+                    System.out.println(mostrarInformacionTren(tren));
+                    break;
+                case 14:
+                    tren = buscarTren();
+                    System.out.println(mostrarCiudadesVisitadasTren(tren));
+                    break;
+                case 15:
+                    System.out.println("Ingrese el nombre de la estación:");
+                    sc.nextLine();
+                    String nombreEstacion = sc.nextLine();
+                    System.out.println(mostrarInformacionEstacion(nombreEstacion));
+                    break;
+                case 16:
+                    System.out.println("Ingrese el prefijo que desea buscar:");
+                    sc.nextLine();
+                    String prefijo = sc.nextLine();
+                    System.out.println(mostrarEstacionesConPrefijo(prefijo));
+                    break;
             }
         } while (seleccion != 20);
         salida.write("\nFin del log.");
         salida.close();
     }
 
-    public static void pedirDatosRiel() {
-        String estacionA, estacionB;
-        System.out.println("Ingrese el nombre de la estación A");
-        estacionA = sc.nextLine();
-        
+    public static Tren buscarTren(){
+        System.out.println("Ingrese el ID del tren:");
+        int id = sc.nextInt();
+        return (Tren) trenes.obtenerInformacion(id);
     }
-
-    public static void pedirDatosLinea() throws IOException {
-        String linea;
-        System.out.println("Ingrese el nombre de la línea que desea agregar:");
-        linea = sc.next();
-        if (lineaEstacion.containsKey(linea)) {
-            System.out.println("Error: la línea ya existe en el sistema.");
-        } else {
-            System.out.println("Ingrese el nombre de las estaciones que pertenecerán a la línea. Si no desea agregar más estaciones, ingrese #:");
-            String nombreEstacion;
-            Lista estacionesLinea = new Lista();
-            lineaEstacion.put(linea, estacionesLinea);
-            sc.nextLine();
-            nombreEstacion = sc.nextLine();
-            while (!nombreEstacion.equals("#")) {
-                Estacion estacion = (Estacion) estaciones.obtenerInformacion(nombreEstacion);
-                if (estacion == null) {
-                    System.out.println("Error: estación inexistente.");
-                } else {
-                    estacionesLinea.insertar(estacion, estacionesLinea.longitud() + 1);
-                }
-                System.out.println("Ingrese otra estación o # para detener:");
-                nombreEstacion = sc.nextLine();
-            }
-        }
-        escribir(true, linea, 'L', 'I');
+    
+    public static Estacion buscarEstacion(){
+        System.out.println("Ingrese el nombre de la estación:");
+        String nombre = sc.nextLine();
+        return (Estacion) estaciones.obtenerInformacion(nombre);
     }
-
+    
     public static void imprimirMenu() {
         System.out.println("-------------Menú de opciones---------------------");
         System.out.println("1. Insertar tren.");
@@ -105,7 +132,7 @@ public class TPFinal {
         System.out.println("4. Insertar riel.");
         System.out.println("5. Modificar tren.");
         System.out.println("6. Modificar estación.");
-        System.out.println("7. Modificar línea.");
+        System.out.println("7. Modificar línea (insertar más estaciones).");
         System.out.println("8. Modificar km de riel.");
         System.out.println("9. Eliminar tren.");
         System.out.println("10. Eliminar estación.");
@@ -119,40 +146,6 @@ public class TPFinal {
         System.out.println("18. Obtener camino de estación A a estación B que recorra la menor cantidad de kilometros.");
         System.out.println("19. Mostrar sistema.");
         System.out.println("20. Cerrar programa.\n");
-    }
-
-    public static Estacion pedirDatosEstacion() throws IOException {
-        String nombre;
-        Estacion estacion = null;
-        System.out.println("Ingrese el nombre de la estación");
-        sc.nextLine();
-        nombre = sc.nextLine();
-        if (estaciones.obtenerInformacion(nombre) != null) {
-            System.out.println("Error: estación " + nombre + " ya existe en el sistema.");
-        } else {
-            System.out.println("Ingrese el nombre de la calle donde se encuentra la estación:");
-            String calle = sc.nextLine();
-            System.out.println("Ingrese el número de domicilio:");
-            int numCalle = sc.nextInt();
-            System.out.println("Ingrese la ciudad:");
-            sc.nextLine();
-            String ciudad = sc.nextLine();
-            System.out.println("Ingrese el código postal:");
-            int cp = sc.nextInt();
-            System.out.println("Ingrese la cantidad de vías:");
-            int cantVias = sc.nextInt();
-            System.out.println("Ingrese la cantidad de plataformas:");
-            int cantPlataformas = sc.nextInt();
-            String domicilio = calle + ";" + numCalle + ";" + ciudad + ";" + cp;
-            estacion = new Estacion(nombre, domicilio, cantVias, cantPlataformas);
-        }
-        return estacion;
-    }
-
-    public static boolean insertarEstacion(Estacion estacion) throws IOException {
-        boolean exito = estacion == null || estaciones.insertar(estacion.getNombre(), estacion);
-        System.out.println(escribir(exito, estacion, 'E', 'I'));
-        return exito;
     }
 
     public static Tren pedirDatosTren() {
@@ -212,12 +205,346 @@ public class TPFinal {
         return exito;
     }
 
+    public static Estacion pedirDatosEstacion() throws IOException {
+        String nombre;
+        Estacion estacion = null;
+        System.out.println("Ingrese el nombre de la estación");
+        sc.nextLine();
+        nombre = sc.nextLine();
+        if (estaciones.obtenerInformacion(nombre) != null) {
+            System.out.println("Error: estación " + nombre + " ya existe en el sistema.");
+        } else {
+            System.out.println("Ingrese el nombre de la calle donde se encuentra la estación:");
+            String calle = sc.nextLine();
+            System.out.println("Ingrese el número de domicilio:");
+            int numCalle = sc.nextInt();
+            System.out.println("Ingrese la ciudad:");
+            sc.nextLine();
+            String ciudad = sc.nextLine();
+            System.out.println("Ingrese el código postal:");
+            int cp = sc.nextInt();
+            System.out.println("Ingrese la cantidad de vías:");
+            int cantVias = sc.nextInt();
+            System.out.println("Ingrese la cantidad de plataformas:");
+            int cantPlataformas = sc.nextInt();
+            String domicilio = calle + ";" + numCalle + ";" + ciudad + ";" + cp;
+            estacion = new Estacion(nombre, domicilio, cantVias, cantPlataformas);
+        }
+        return estacion;
+    }
+
+    public static boolean insertarEstacion(Estacion estacion) throws IOException {
+        boolean exito = estacion == null || estaciones.insertar(estacion.getNombre(), estacion);
+        System.out.println(escribir(exito, estacion, 'E', 'I'));
+        return exito;
+    }
+
+    public static void pedirDatosRielMod() throws IOException {
+        String nombreEstacionA, nombreEstacionB;
+        System.out.println("Ingrese el nombre de la estación A:");
+        sc.nextLine();
+        int km = 0;
+        boolean exito = false;
+        nombreEstacionA = sc.nextLine();
+        Estacion estacionA = (Estacion) estaciones.obtenerInformacion(nombreEstacionA);
+        System.out.println("Ingrese el nombre de la estación B:");
+        nombreEstacionB = sc.nextLine();
+        Estacion estacionB = (Estacion) estaciones.obtenerInformacion(nombreEstacionB);
+        if (estacionA != null && estacionB != null) {
+            System.out.println("Ingrese los km entre la estación A y B:");
+            km = sc.nextInt();
+            exito = true;
+            //modificar arco
+            conexionEstaciones.modificarArco(estacionA, estacionB, km);
+        }
+        escribir(exito, nombreEstacionA + ";" + nombreEstacionB + ";" + km, 'R', 'I');
+    }
+
+    public static boolean modificarLinea() throws IOException {
+        Estacion estacion;
+        boolean exito = true;
+        System.out.println("Ingrese la línea a modificar:");
+        String linea = sc.nextLine();
+        if (lineaEstacion.containsKey(linea)) {
+            System.out.println("Ingrese el nombre de las estaciones que pertenecerán a la línea. Si no desea agregar más estaciones, ingrese #:");
+            String nombreEstacion;
+            Lista estacionesLinea = new Lista();
+            lineaEstacion.put(linea, estacionesLinea);
+            sc.nextLine();
+            nombreEstacion = sc.nextLine();
+            while (!nombreEstacion.equals("#")) {
+                estacion = (Estacion) estaciones.obtenerInformacion(nombreEstacion);
+                if (estacion == null) {
+                    System.out.println("Error: estación inexistente.");
+                } else {
+                    estacionesLinea.insertar(estacion, estacionesLinea.longitud() + 1);
+                }
+                System.out.println("Ingrese otra estación o # para detener:");
+                nombreEstacion = sc.nextLine();
+            }
+        } else {
+            System.out.println("Error: línea inexistente.");
+            exito = false;
+        }
+        escribir(true, linea, 'L', 'I');
+        return exito;
+    }
+
+    public static void pedirDatosRiel() throws IOException {
+        String nombreEstacionA, nombreEstacionB;
+        System.out.println("Ingrese el nombre de la estación A:");
+        sc.nextLine();
+        nombreEstacionA = sc.nextLine();
+        Estacion estacionA = (Estacion) estaciones.obtenerInformacion(nombreEstacionA);
+        if (estacionA != null) {
+            System.out.println("Ingrese el nombre de la estación B:");
+            nombreEstacionB = sc.nextLine();
+            Estacion estacionB = (Estacion) estaciones.obtenerInformacion(nombreEstacionB);
+            if (estacionB != null) {
+                System.out.println("Ingrese los km entre la estación A y B:");
+                int km = sc.nextInt();
+                boolean exito = insertarRiel(estacionA, estacionB, km);
+                escribir(exito, nombreEstacionA + ";" + nombreEstacionB + ";" + km, 'R', 'I');
+            }
+        }
+    }
+
+    public static boolean insertarRiel(Estacion a, Estacion b, int km) {
+        boolean exito = conexionEstaciones.insertarArco(a, b, km);
+        System.out.println(conexionEstaciones.existeArco(a, b));
+        return exito;
+    }
+
+    public static void pedirDatosLinea() throws IOException {
+        String linea;
+        System.out.println("Ingrese el nombre de la línea que desea agregar:");
+        linea = sc.next();
+        if (lineaEstacion.containsKey(linea)) {
+            System.out.println("Error: la línea ya existe en el sistema.");
+        } else {
+            System.out.println("Ingrese el nombre de las estaciones que pertenecerán a la línea. Si no desea agregar más estaciones, ingrese #:");
+            String nombreEstacion;
+            Lista estacionesLinea = new Lista();
+            lineaEstacion.put(linea, estacionesLinea);
+            sc.nextLine();
+            nombreEstacion = sc.nextLine();
+            while (!nombreEstacion.equals("#")) {
+                Estacion estacion = (Estacion) estaciones.obtenerInformacion(nombreEstacion);
+                if (estacion == null) {
+                    System.out.println("Error: estación inexistente.");
+                } else {
+                    estacionesLinea.insertar(estacion, estacionesLinea.longitud() + 1);
+                }
+                System.out.println("Ingrese otra estación o # para detener:");
+                nombreEstacion = sc.nextLine();
+            }
+        }
+        escribir(true, linea, 'L', 'I');
+    }
+
+    public static Modificacion pedirDatosEstacionMod() throws IOException {
+        Estacion estacion;
+        int eleccion = 0;
+        System.out.println("Ingrese el nombre de la estación que desea modificar:");
+        sc.nextLine();
+        String nombre = sc.nextLine();
+        estacion = (Estacion) estaciones.obtenerInformacion(nombre);
+        if (estacion != null) {
+            System.out.println("Ingrese el campo que desea modificar:");
+            System.out.println("1. Domicilio.");
+            System.out.println("2. Cantidad de vías.");
+            System.out.println("3. Cantidad de plataformas.");
+            eleccion = sc.nextInt();
+        } else {
+            System.out.println("Error: estación inexistente.");
+        }
+        Modificacion mod = new Modificacion(estacion, eleccion);
+        return mod;
+    }
+
+    public static boolean modificarEstacion(Modificacion mod) throws IOException {
+        Estacion estacion = (Estacion) mod.getObjAModificar();
+        int eleccion = mod.getCampoAModificar();
+        boolean exito = true;
+        if (estacion != null) {
+            switch (eleccion) {
+                case 1:
+                    String calle,
+                     ciudad,
+                     cp,
+                     domicilio;
+                    int numCalle;
+                    System.out.println("Ingrese el nombre de la calle:");
+                    sc.nextLine();
+                    calle = sc.nextLine();
+                    System.out.println("Ingrese el número de la calle:");
+                    numCalle = sc.nextInt();
+                    System.out.println("Ingrese la ciudad:");
+                    sc.nextLine();
+                    ciudad = sc.nextLine();
+                    System.out.println("Ingrese el código postal:");
+                    cp = sc.nextLine();
+                    domicilio = calle + ";" + numCalle + ";" + ciudad + ";" + cp;
+                    estacion.setDomicilio(domicilio);
+                    break;
+                case 2:
+                    System.out.println("Ingrese la cantidad de vías:");
+                    int cantVias = sc.nextInt();
+                    estacion.setCantVias(cantVias);
+                    break;
+                case 3:
+                    System.out.println("Ingrese la cantidad de plataformas:");
+                    int cantPlataformas = sc.nextInt();
+                    estacion.setCantPlat(cantPlataformas);
+                    break;
+                default:
+                    System.out.println("Opción no existe.");
+                    exito = false;
+            }
+        } else {
+            exito = false;
+        }
+        escribir(exito, estacion, 'E', 'M');
+        return exito;
+    }
+
+    public static Modificacion pedirDatosTrenMod() {
+        int eleccion = 0;
+        System.out.println("Ingrese el ID del tren que desea modificar:");
+        int idTren = sc.nextInt();
+        Tren tren = (Tren) trenes.obtenerInformacion(idTren);
+        if (tren != null) {
+            System.out.println("Ingrese el campo que desea modificar:");
+            System.out.println("1. Tipo de propulsión.");
+            System.out.println("2. Cantidad de vagones para pasajeros.");
+            System.out.println("3. Cantidad de vagones para carga.");
+            System.out.println("4. Linea asignada.");
+            eleccion = sc.nextInt();
+        } else {
+            System.out.println("Error: tren inexistente.");
+        }
+        Modificacion mod = new Modificacion(tren, eleccion);
+        return mod;
+    }
+
+    public static boolean modificarTren(Modificacion mod) throws IOException {
+        Tren tren = (Tren) mod.getObjAModificar();
+        int eleccion = mod.getCampoAModificar();
+        boolean exito = true;
+        if (tren != null) {
+            switch (eleccion) {
+                case 1:
+                    System.out.println("Ingrese el tipo de propulsión:");
+                    System.out.println("1. Diesel");
+                    System.out.println("2. Gasolina");
+                    System.out.println("3. Híbrido");
+                    System.out.println("4. Electricidad");
+                    System.out.println("5. Fuel oil");
+                    int tipo = sc.nextInt();
+                    String tipoPropulsion = "";
+                    switch (tipo) {
+                        case 1:
+                            tipoPropulsion = "diesel";
+                            break;
+                        case 2:
+                            tipoPropulsion = "gasolina";
+                            break;
+                        case 3:
+                            tipoPropulsion = "híbrido";
+                            break;
+                        case 4:
+                            tipoPropulsion = "electricidad";
+                            break;
+                        case 5:
+                            tipoPropulsion = "fuel oil";
+                            break;
+                        default:
+                            System.out.println("Opción no existe.");
+                            exito = false;
+                    }
+                    tren.setTipoPropulsion(tipoPropulsion);
+                    break;
+                case 2:
+                    System.out.println("Ingrese la cantidad de vagones para pasajeros:");
+                    int cantVagPas = sc.nextInt();
+                    tren.setCantVagonesPasajeros(cantVagPas);
+                    break;
+                case 3:
+                    System.out.println("Ingrese la cantidad de vagones para carga:");
+                    int cantVagCarga = sc.nextInt();
+                    tren.setCantVagonesCarga(cantVagCarga);
+                    break;
+                case 4:
+                    System.out.println("Ingrese la línea asignada:");
+                    String linea = sc.nextLine();
+                    if (!lineaEstacion.containsKey(linea)) {
+                        exito = false;
+                    } else {
+                        tren.setLinea(linea);
+                    }
+
+                    break;
+            }
+        } else {
+            exito = false;
+        }
+        escribir(exito, tren, 'T', 'M');
+        return exito;
+    }
+
+    public static String mostrarEstacionesConPrefijo(String prefijo) {
+        Lista nombresEstaciones = estaciones.listarClaves();
+        Lista estacionesConPrefijo = new Lista();
+        int length = nombresEstaciones.longitud();
+        for (int i = 1; i <= length; i++) {
+            String nombre = (String) nombresEstaciones.recuperar(i);
+            if (nombre.startsWith(prefijo)) {
+                estacionesConPrefijo.insertar(nombre, estacionesConPrefijo.longitud() + 1);
+            }
+        }
+        return estacionesConPrefijo.toString();
+    }
+
+    public static String mostrarInformacionEstacion(String nombre) {
+        String informacionEstacion = "Estación inexistente.";
+        Estacion estacion = (Estacion) estaciones.obtenerInformacion(nombre);
+        if (estacion != null) {
+            informacionEstacion = estacion.toString();
+        }
+        return informacionEstacion;
+    }
+
+    public static String mostrarInformacionTren(Tren tren) {
+        String retorno = "Tren inexistente.";
+        if (tren != null) {
+            retorno = tren.toString();
+        }
+        return retorno;
+    }
+
+    public static String mostrarCiudadesVisitadasTren(Tren tren) {
+        Lista ciudades = new Lista();
+        if (tren != null) {
+            String linea = tren.getLinea();
+            Lista estacionesLinea = lineaEstacion.get(linea);
+            int length = estacionesLinea.longitud();
+            for (int i = 1; i <= length; i++) {
+                Estacion estacionTemp = (Estacion) estacionesLinea.recuperar(i);
+                String domicilio = estacionTemp.getDomicilio();
+                int posLim = domicilio.indexOf(";");
+                String ciudad = domicilio.substring(0, posLim);
+                ciudades.insertar(ciudad, i);
+            }
+        }
+        return ciudades.toString();
+    }
+
     //métodos para carga inicial
-    public static void cargaInicial() throws IOException  {
+    public static void cargaInicial() throws IOException {
         salida.write("Inicio del log.\n\n");
         salida.write("INICIO CARGA INICIAL");
         salida.write("\n42 ESTACIONES 41 RIELES 3 LINEAS 20 TRENES\n");
-        try (BufferedReader input = new BufferedReader(entrada)) {
+        try ( BufferedReader input = new BufferedReader(entrada)) {
             String line;
             while ((line = input.readLine()) != null) {
                 leerCadena(line);
@@ -398,7 +725,7 @@ public class TPFinal {
                 salida.write(retorno);
             }
         } else {
-            retorno = "Error: no se pudo realizar la operación " + operacion + " para " + obj + " correctamente\n";
+            retorno = "Error: " + obj + " inexistente. No se pudo realizar la operación " + operacion + "correctamente\n";
             salida.write(retorno);
         }
         return retorno;
