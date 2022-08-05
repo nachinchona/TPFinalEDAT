@@ -1,8 +1,8 @@
 package tpfinal;
 
 public class Modificacion {
-    private Object objAModificar;
-    private int campoAModificar;
+    private final Object objAModificar;
+    private final int campoAModificar;
     
     public Modificacion(Object objAModificar, int campoAModificar){
         this.objAModificar = objAModificar;

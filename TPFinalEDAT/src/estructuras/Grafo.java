@@ -1,60 +1,49 @@
 package estructuras;
+
+import java.util.HashMap;
+
 public class Grafo {
 
     private NodoVert inicio;
+    private int cantVertices;
 
     public Grafo() {
         this.inicio = null;
+        this.cantVertices = 0;
     }
-    
+
     //falta caminoMasCorto, caminoMasLargo, listarEnAnchura, clone
-    
-    public Lista caminoMasCorto(Object origen, Object destino){
-        Lista ls = new Lista();
-        ls.agregarElem(origen, 1);
-        
-        return ls;
-    }
-    
-    private void caminoMasCortoPR(NodoVert nodo, Object destino, Lista ls){
-        if (nodo != null) {
-            if (nodo.getElem().equals(destino)) {
-                
-            }
-        }
-    }
-    
-    public boolean existeCamino(Object origen, Object destino){
+    public boolean existeCamino(Object origen, Object destino) {
         boolean exito = false;
         NodoVert auxO = null;
         NodoVert auxD = null;
         NodoVert aux = this.inicio;
-        while((auxO == null || auxD == null) && aux != null){
+        while ((auxO == null || auxD == null) && aux != null) {
             if (aux.getElem().equals(origen)) {
-               auxO = aux; 
+                auxO = aux;
             }
             if (aux.getElem().equals(destino)) {
                 auxD = aux;
             }
             aux = aux.getSigVertice();
-        } 
-        
+        }
+
         if (auxO != null && auxD != null) {
             Lista visitados = new Lista();
             exito = existeCaminoPR(auxO, destino, visitados);
         }
         return exito;
     }
-    
-    private boolean existeCaminoPR(NodoVert nodo, Object dest, Lista vis){
+
+    private boolean existeCaminoPR(NodoVert nodo, Object dest, Lista vis) {
         boolean exito = false;
         if (nodo != null) {
             if (nodo.getElem().equals(dest)) {
                 exito = true;
-            }else{
-                vis.insertar(nodo.getElem(), vis.longitud()+1);
+            } else {
+                vis.insertar(nodo.getElem(), vis.longitud() + 1);
                 NodoAdy aux = nodo.getPrimerAdy();
-                while(!exito && aux != null){
+                while (!exito && aux != null) {
                     if (vis.localizar(aux.getVertice().getElem()) < 0) {
                         exito = existeCaminoPR(aux.getVertice(), dest, vis);
                     }
@@ -64,11 +53,78 @@ public class Grafo {
         }
         return exito;
     }
-    
-    public Lista listarEnProfundidad(){
+
+    public Lista listarEnAnchura() {
         Lista visitados = new Lista();
         NodoVert aux = this.inicio;
-        while(aux != null){
+        while (aux != null) {
+            if (visitados.localizar(aux.getElem()) < 0) {
+                listarEnAnchuraPR(aux, visitados);
+            }
+        }
+        return visitados;
+    }
+
+    public void listarEnAnchuraPR(NodoVert nodo, Lista vis) {
+        Cola q = new Cola();
+        vis.insertar(nodo.getElem(), vis.longitud() + 1);
+        q.poner(nodo);
+        while (!q.esVacia()) {
+            NodoVert aux = (NodoVert) q.obtenerFrente();
+            q.sacar();
+            NodoAdy auxAdy = aux.getPrimerAdy();
+            while (auxAdy != null) {
+                if (vis.localizar(auxAdy.getVertice().getElem()) < 0) {
+                    vis.insertar(auxAdy.getVertice().getElem(), vis.longitud() + 1);
+                    q.poner(aux);
+                }
+            }
+        }
+    }
+
+    public Lista caminoMasCortoPonderado(Object origen, Object destino) {
+        HashMap visitados = new HashMap();
+        return null;
+    }
+
+    public Lista caminoMasCorto(Object origen, Object destino) {
+        HashMap visitados = new HashMap();
+        Cola q = new Cola();
+        Lista ls = new Lista();
+        visitados.put(origen, origen);
+        boolean encontro = false;
+        NodoVert aux = ubicarVertice(origen);
+        q.poner(aux);
+        while (!q.esVacia() && !encontro) {
+            aux = (NodoVert) q.obtenerFrente();
+            q.sacar();
+            NodoAdy auxAdy = aux.getPrimerAdy();
+            while (auxAdy != null && !encontro) {
+                if (!visitados.containsKey(auxAdy.getVertice().getElem())) {
+                    if (auxAdy.getVertice().getElem().equals(destino)) {
+                        encontro = true;
+                    } else {
+                        q.poner(auxAdy.getVertice());
+                    }
+                    visitados.put(auxAdy.getVertice().getElem(), aux.getElem());
+                }
+                auxAdy = auxAdy.getSigAdyacente();
+            }
+        }
+        //reconstruir camino de destino hacia origen insertando en pos 1
+        ls.insertar(destino, 1);
+        Object backtrack = destino;
+        while (!backtrack.equals(origen)) {
+            backtrack = visitados.get(backtrack);
+            ls.insertar(backtrack, 1);
+        }
+        return ls;
+    }
+
+    public Lista listarEnProfundidad() {
+        Lista visitados = new Lista();
+        NodoVert aux = this.inicio;
+        while (aux != null) {
             if (visitados.localizar(aux.getElem()) < 0) {
                 listarEnProfundidadPR(aux, visitados);
             }
@@ -76,13 +132,26 @@ public class Grafo {
         }
         return visitados;
     }
-    
-    private void listarEnProfundidadPR(NodoVert nodo, Lista vis){
+
+    private void listarEnProfundidadPR(NodoVert nodo, Lista vis) {
         if (nodo != null) {
-            vis.insertar(nodo.getElem(), vis.longitud()+1);
+            vis.insertar(nodo.getElem(), vis.longitud() + 1);
             NodoAdy aux = nodo.getPrimerAdy();
-            while(aux != null){
-                if (vis.localizar(aux.getVertice().getElem())<0) {
+            while (aux != null) {
+                if (vis.localizar(aux.getVertice().getElem()) < 0) {
+                    listarEnProfundidadPR(aux.getVertice(), vis);
+                }
+                aux = aux.getSigAdyacente();
+            }
+        }
+    }
+
+    private void caminoLiviano(NodoVert nodo, Lista vis, Lista caminoMasCorto, int km, int tope) {
+        if (nodo != null) {
+            vis.insertar(nodo.getElem(), vis.longitud() + 1);
+            NodoAdy aux = nodo.getPrimerAdy();
+            while (aux != null) {
+                if (vis.localizar(aux.getVertice().getElem()) < 0) {
                     listarEnProfundidadPR(aux.getVertice(), vis);
                 }
                 aux = aux.getSigAdyacente();
@@ -105,6 +174,7 @@ public class Grafo {
             this.inicio = new NodoVert(elem, this.inicio);
             exito = true;
         }
+        this.cantVertices++;
         return exito;
     }
 
@@ -121,15 +191,15 @@ public class Grafo {
             while (aux != null && !encontro) {
                 if (aux.getVertice().getElem().equals(destino)) {
                     encontro = true;
-                }else{
+                } else {
                     aux = aux.getSigAdyacente();
                 }
             }
         }
         return aux;
     }
-    
-    public boolean modificarArco(Object origen, Object destino, int etiqueta){
+
+    public boolean modificarArco(Object origen, Object destino, int etiqueta) {
         boolean exito = false;
         NodoAdy arco = ubicarArco(origen, destino);
         if (arco != null) {
@@ -138,7 +208,7 @@ public class Grafo {
         }
         return exito;
     }
-    
+
     private boolean insertarAdyacente(NodoVert a, NodoVert b, int etiqueta) {
         boolean exito = true;
         NodoAdy aux = a.getPrimerAdy();
@@ -193,11 +263,11 @@ public class Grafo {
         boolean encontro = false;
         if (aux != null) {
             NodoAdy anterior = null;
-            while(aux != null && !encontro){
+            while (aux != null && !encontro) {
                 if (aux.getVertice().getElem().equals(b)) {
                     encontro = true;
                     vertDestino = aux.getVertice();
-                }else{
+                } else {
                     anterior = aux;
                     aux = aux.getSigAdyacente();
                 }
@@ -205,18 +275,18 @@ public class Grafo {
             if (encontro) {
                 if (anterior != null) {
                     anterior.setSigAdyacente(aux.getSigAdyacente());
-                }else{
+                } else {
                     a.setPrimerAdy(aux.getSigAdyacente());
                 }
             }
         }
         return vertDestino;
     }
-    
-    public boolean esVacio(){
+
+    public boolean esVacio() {
         return this.inicio == null;
     }
-    
+
     public String toString() {
         String toString = "";
         if (this.inicio != null) {
@@ -224,7 +294,39 @@ public class Grafo {
         }
         return toString;
     }
-    
+
+    public boolean eliminarVertice(Object elemVertice) {
+        boolean exito = false;
+        NodoVert vertice = null;
+        NodoVert auxVert = this.inicio;
+        NodoVert vertAnterior = null;
+        while (vertice == null && auxVert != null) {
+            if (auxVert.getElem().equals(elemVertice)) {
+                vertice = auxVert;
+            } else {
+                vertAnterior = auxVert;
+            }
+            auxVert = auxVert.getSigVertice();
+        }
+        if (vertice != null) {
+            exito = true;
+            NodoAdy aux = vertice.getPrimerAdy();
+            while (aux != null) {
+                eliminarArcoAux(aux.getVertice(), elemVertice);
+                aux = aux.getSigAdyacente();
+            }
+            if (vertAnterior != null) {
+                vertAnterior.setSigVert(auxVert);
+            } else {
+                this.inicio = auxVert;
+            }
+        }
+        if (exito) {
+            this.cantVertices--;
+        }
+        return exito;
+    }
+
     private String toStringPR(NodoVert vertice) {
         String toString = "";
         if (vertice != null) {

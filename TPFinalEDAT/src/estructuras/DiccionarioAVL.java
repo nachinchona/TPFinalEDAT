@@ -106,7 +106,7 @@ public class DiccionarioAVL {
                 balanceAux = balance(nodo.getDerecho());
                 if (balanceAux == -1 || balanceAux == 0) {
                     //balance simple por izquierda
-                    rotacionIzq(null, nodo);
+                    this.raiz = rotacionIzq(null, nodo);
                 } else {
                     //balance doble derecha izquierda
                     nodo.setDerecho(rotacionDer(nodo, nodo.getDerecho()));
@@ -175,22 +175,12 @@ public class DiccionarioAVL {
 
     private NodoDiccAVL rotacionIzq(NodoDiccAVL padre, NodoDiccAVL r) {
         NodoDiccAVL h;
-        if (padre != null) {
             h = r.getDerecho();
             NodoDiccAVL temp = h.getIzquierdo();
             h.setIzquierdo(r);
             r.setDerecho(temp);
             h.recalcularAltura();
             r.recalcularAltura();
-        } else {
-            h = r.getDerecho();
-            NodoDiccAVL temp = h.getIzquierdo();
-            h.setIzquierdo(r);
-            r.setDerecho(temp);
-            this.raiz = h;
-            h.recalcularAltura();
-            r.recalcularAltura();
-        }
         return h;
     }
 
@@ -245,10 +235,8 @@ public class DiccionarioAVL {
                     exito = eliminarPR(nodo, nodo.getDerecho(), elem);
                 }
             }
-            System.out.println("Exito: " + exito + " Nodo:" + nodo.getClave());
             if (exito) {
                 nodo.recalcularAltura();
-                System.out.println("Nodo: " + nodo.getClave() + ", " + balance(nodo));
                 if (padre == null) {
                     balancearRaiz(nodo, balance(nodo));
                 } else {
@@ -365,11 +353,7 @@ public class DiccionarioAVL {
     }
 
     public boolean existeClave(Comparable elem) {
-        boolean pertenece = false;
-        if (this.raiz != null) {
-            pertenece = pertenecePR(this.raiz, elem);
-        }
-        return pertenece;
+        return pertenecePR(this.raiz, elem);
     }
 
     private boolean pertenecePR(NodoDiccAVL nodo, Comparable elem) {
@@ -388,6 +372,7 @@ public class DiccionarioAVL {
         return pertenece;
     }
 
+    @Override
     public String toString() {
         String toString = toStringPR(this.raiz);
         return toString;
