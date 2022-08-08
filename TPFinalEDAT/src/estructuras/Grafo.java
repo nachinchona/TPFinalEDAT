@@ -5,11 +5,9 @@ import java.util.HashMap;
 public class Grafo {
 
     private NodoVert inicio;
-    private int cantVertices;
 
     public Grafo() {
         this.inicio = null;
-        this.cantVertices = 0;
     }
 
     public boolean existeCamino(Object origen, Object destino) {
@@ -146,35 +144,37 @@ public class Grafo {
         Lista vis = new Lista();
         Lista caminoMasCorto = new Lista();
         NodoVert nodo = ubicarVertice(origen);
-        caminoMasLivianoPR(nodo, destino, vis, caminoMasCorto, 0, 0);
+        Resultado res = new Resultado(0, 0);
+        caminoMasCorto = caminoMasLivianoPR(nodo, destino, vis, caminoMasCorto, res);
         return caminoMasCorto;
     }
 
-    private int caminoMasLivianoPR(NodoVert nodo, Object destino, Lista vis, Lista caminoMasCorto, int km, int tope) {
-        int kmArco = 0;
+    private Lista caminoMasLivianoPR(NodoVert nodo, Object destino, Lista vis, Lista caminoMasCorto, Resultado res) {
+        int kmArco;
         if (nodo != null) {
             vis.insertar(nodo.getElem(), vis.longitud() + 1);
-            NodoAdy aux = nodo.getPrimerAdy();
-            Lista camino = new Lista();
-            if (aux.getVertice().getElem().equals(destino)) {
-                caminoMasCorto.insertar(destino, caminoMasCorto.longitud() + 1);
-                if (km < tope || tope == 0) {
-                    caminoMasCorto = camino.clone();
-                    tope = km;
-                }
+            if (nodo.getElem().equals(destino)) {
+                caminoMasCorto = vis.clone();
+                res.setTope(res.getKm());
             } else {
+                NodoAdy aux = nodo.getPrimerAdy();
                 while (aux != null) {
+                    kmArco = aux.getEtiqueta();
+                    res.setKm(res.getKm() + kmArco);
                     if (vis.localizar(aux.getVertice().getElem()) < 0) {
-                        vis.insertar(aux.getVertice().getElem(), vis.longitud() + 1);
-                        kmArco = aux.getEtiqueta();
-                        km = km + caminoMasLivianoPR(aux.getVertice(), destino, vis, caminoMasCorto, km, tope);
+                        if (res.getKm() < res.getTope() || res.getTope() == 0) {
+                            caminoMasCorto = caminoMasLivianoPR(aux.getVertice(), destino, vis, caminoMasCorto, res);
+                        }
                     }
                     aux = aux.getSigAdyacente();
+                    //vuelta resta los km agregados anteriormente
+                    res.setKm(res.getKm() - kmArco);
                 }
             }
-            vis.eliminar(vis.localizar(nodo.getElem()));
+            //vuelta va eliminando los visitados
+            vis.eliminar(vis.longitud());
         }
-        return kmArco;
+        return caminoMasCorto;
     }
 
     private NodoVert ubicarVertice(Object buscado) {
@@ -192,7 +192,6 @@ public class Grafo {
             this.inicio = new NodoVert(elem, this.inicio);
             exito = true;
         }
-        this.cantVertices++;
         return exito;
     }
 
@@ -305,6 +304,7 @@ public class Grafo {
         return this.inicio == null;
     }
 
+    @Override
     public String toString() {
         String toString = "";
         if (this.inicio != null) {
@@ -338,9 +338,6 @@ public class Grafo {
             } else {
                 this.inicio = auxVert;
             }
-        }
-        if (exito) {
-            this.cantVertices--;
         }
         return exito;
     }

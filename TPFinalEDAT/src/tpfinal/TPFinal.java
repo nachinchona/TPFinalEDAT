@@ -44,6 +44,7 @@ public class TPFinal {
         do {
             Tren tren;
             Estacion estacion;
+            String nombreOrigen, nombreDestino;
             System.out.println("Ingrese la opción deseada:");
             seleccion = sc.nextInt();
             switch (seleccion) {
@@ -80,12 +81,18 @@ public class TPFinal {
                 case 9:
                     System.out.println("Ingrese el nombre de la estación origen");
                     sc.nextLine();
-                    String nombreOrigen = sc.nextLine();
+                    nombreOrigen = sc.nextLine();
                     System.out.println("Ingrese el nombre de la estación destino");
-                    String nombreDestino = sc.nextLine();
+                    nombreDestino = sc.nextLine();
                     System.out.println(caminoPorMenosEstaciones(nombreOrigen, nombreDestino));
                     break;
                 case 10:
+                    System.out.println("Ingrese el nombre de la estación origen");
+                    sc.nextLine();
+                    nombreOrigen = sc.nextLine();
+                    System.out.println("Ingrese el nombre de la estación destino");
+                    nombreDestino = sc.nextLine();
+                    System.out.println("Camino más corto según km: " + listarCaminoMasCortoSegunKm(nombreOrigen, nombreDestino).toString());
                     break;
                 case 11:
                     System.out.println(mostrarSistema());
@@ -98,8 +105,18 @@ public class TPFinal {
     }
 
     public static String mostrarSistema() {
-        String line = "Estaciones:\n"+estaciones.toString()+"\nTrenes:\n"+trenes.toString()+"\nRieles:\n"+conexionEstaciones.toString()+"\nLíneas:\n"+lineaEstacion.toString()+"\n";
+        String line = "Estaciones:\n" + estaciones.toString() + "\nTrenes:\n" + trenes.toString() + "\nRieles:\n" + conexionEstaciones.toString() + "\nLíneas:\n" + lineaEstacion.toString() + "\n";
         return line;
+    }
+
+    public static Lista listarCaminoMasCortoSegunKm(String a, String b) {
+        Estacion estacionA = (Estacion) estaciones.obtenerInformacion(a);
+        Estacion estacionB = (Estacion) estaciones.obtenerInformacion(b);
+        Lista retorno = new Lista();
+        if (estacionA != null && estacionB != null) {
+            retorno = conexionEstaciones.caminoMasLiviano(estacionA, estacionB);
+        }
+        return retorno;
     }
 
     public static Lista caminoPorMenosEstaciones(String nombreA, String nombreB) {
@@ -525,7 +542,6 @@ public class TPFinal {
                 exito = modificarRiel(nombreEstacionA, nombreEstacionB, km);
                 break;
         }
-
         return exito;
     }
 

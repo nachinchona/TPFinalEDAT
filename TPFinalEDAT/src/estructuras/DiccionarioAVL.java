@@ -200,7 +200,6 @@ public class DiccionarioAVL {
         if (this.raiz != null) {
             if (this.raiz.getClave().equals(elem)) {
                 exito = true;
-                System.out.println("aca");
                 eliminarRaiz(determinarCaso(this.raiz));
             } else {
                 exito = eliminarPR(null, this.raiz, elem);
@@ -285,9 +284,9 @@ public class DiccionarioAVL {
                         padreAux = aux;
                         aux = aux.getIzquierdo();
                     }
-                    System.out.println(padreAux.getClave());
-                    System.out.println(aux.getClave());
-                    intercambiar(nodo, aux);
+                    NodoDiccAVL temp = new NodoDiccAVL(aux.getClave(), aux.getDato(), null, null);
+                    eliminarPR(padreAux, aux, aux.getClave());
+                    intercambiar(nodo, temp);
                     padreAux.setIzquierdo(aux.getDerecho());
                 }
                 balancear(nodo, padreAux, balance(padreAux));
@@ -334,7 +333,10 @@ public class DiccionarioAVL {
                         padreAux = aux;
                         aux = aux.getIzquierdo();
                     }
-                    intercambiar(nodo, aux);
+                    //solo para intercambiar
+                    NodoDiccAVL temp = new NodoDiccAVL(aux.getClave(), aux.getDato(), null, null);
+                    eliminarPR(padreAux, aux, aux.getClave());
+                    intercambiar(nodo, temp);
                     padreAux.setIzquierdo(aux.getDerecho());
                     balancear(nodo, padreAux, balance(padreAux));
                 }
