@@ -26,8 +26,8 @@ public class TPFinal {
 
     static {
         try {
-            salida = new FileWriter("C:\\Users\\nachinchona\\Desktop\\test.txt");
-            entrada = new FileReader("C:\\Users\\nachinchona\\Desktop\\cargaInicial.txt");
+            salida = new FileWriter("test.txt");
+            entrada = new FileReader("cargaInicial.txt");
         } catch (IOException e) {
             throw new RuntimeException();
         }
@@ -99,18 +99,6 @@ public class TPFinal {
 
     public static String mostrarSistema() {
         String line = "Estaciones:\n"+estaciones.toString()+"\nTrenes:\n"+trenes.toString()+"\nRieles:\n"+conexionEstaciones.toString()+"\nLíneas:\n"+lineaEstacion.toString()+"\n";
-        /*System.out.println("Estaciones:");
-        System.out.println(estaciones.toString());
-        System.out.println("");
-        System.out.println("Trenes:");
-        System.out.println(trenes.toString());
-        System.out.println("");
-        System.out.println("Rieles:");
-        System.out.println(conexionEstaciones.toString());
-        System.out.println("");
-        System.out.println("Líneas:");
-        System.out.println(lineaEstacion.toString());
-        System.out.println("");*/
         return line;
     }
 

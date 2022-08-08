@@ -12,7 +12,6 @@ public class Grafo {
         this.cantVertices = 0;
     }
 
-    //falta caminoMasCorto, caminoMasLargo, listarEnAnchura, clone
     public boolean existeCamino(Object origen, Object destino) {
         boolean exito = false;
         NodoVert auxO = null;
@@ -61,6 +60,7 @@ public class Grafo {
             if (visitados.localizar(aux.getElem()) < 0) {
                 listarEnAnchuraPR(aux, visitados);
             }
+            aux = aux.getSigVertice();
         }
         return visitados;
     }
@@ -78,13 +78,9 @@ public class Grafo {
                     vis.insertar(auxAdy.getVertice().getElem(), vis.longitud() + 1);
                     q.poner(aux);
                 }
+                auxAdy = auxAdy.getSigAdyacente();
             }
         }
-    }
-
-    public Lista caminoMasCortoPonderado(Object origen, Object destino) {
-        HashMap visitados = new HashMap();
-        return null;
     }
 
     public Lista caminoMasCorto(Object origen, Object destino) {
@@ -146,19 +142,41 @@ public class Grafo {
         }
     }
 
-    private void caminoLiviano(NodoVert nodo, Lista vis, Lista caminoMasCorto, int km, int tope) {
+    public Lista caminoMasLiviano(Object origen, Object destino) {
+        Lista vis = new Lista();
+        Lista caminoMasCorto = new Lista();
+        NodoVert nodo = ubicarVertice(origen);
+        caminoMasLivianoPR(nodo, destino, vis, caminoMasCorto, 0, 0);
+        return caminoMasCorto;
+    }
+
+    private int caminoMasLivianoPR(NodoVert nodo, Object destino, Lista vis, Lista caminoMasCorto, int km, int tope) {
+        int kmArco = 0;
         if (nodo != null) {
             vis.insertar(nodo.getElem(), vis.longitud() + 1);
             NodoAdy aux = nodo.getPrimerAdy();
-            while (aux != null) {
-                if (vis.localizar(aux.getVertice().getElem()) < 0) {
-                    listarEnProfundidadPR(aux.getVertice(), vis);
+            Lista camino = new Lista();
+            if (aux.getVertice().getElem().equals(destino)) {
+                caminoMasCorto.insertar(destino, caminoMasCorto.longitud() + 1);
+                if (km < tope || tope == 0) {
+                    caminoMasCorto = camino.clone();
+                    tope = km;
                 }
-                aux = aux.getSigAdyacente();
+            } else {
+                while (aux != null) {
+                    if (vis.localizar(aux.getVertice().getElem()) < 0) {
+                        vis.insertar(aux.getVertice().getElem(), vis.longitud() + 1);
+                        kmArco = aux.getEtiqueta();
+                        km = km + caminoMasLivianoPR(aux.getVertice(), destino, vis, caminoMasCorto, km, tope);
+                    }
+                    aux = aux.getSigAdyacente();
+                }
             }
+            vis.eliminar(vis.localizar(nodo.getElem()));
         }
+        return kmArco;
     }
-    
+
     private NodoVert ubicarVertice(Object buscado) {
         NodoVert aux = this.inicio;
         while (aux != null && !aux.getElem().equals(buscado)) {

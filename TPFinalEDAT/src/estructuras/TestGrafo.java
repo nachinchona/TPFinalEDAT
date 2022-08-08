@@ -4,7 +4,23 @@ public class TestGrafo {
 
     public static void main(String[] args) {
         Grafo grafo = new Grafo();
+        grafo.insertarVertice('E');
+        grafo.insertarVertice('D');
+        grafo.insertarVertice('C');
+        grafo.insertarVertice('B');
         grafo.insertarVertice('A');
+        grafo.insertarArco('A', 'B', 6);
+        grafo.insertarArco('A', 'D', 1);
+        grafo.insertarArco('B', 'E', 2);
+        grafo.insertarArco('D', 'B', 2);
+        grafo.insertarArco('D', 'E', 1);
+        grafo.insertarArco('B', 'C', 5);
+        grafo.insertarArco('E', 'C', 5);
+        System.out.println(grafo.toString());
+
+        System.out.println(grafo.caminoMasLiviano('A', 'C'));
+        //minitest caminoMasCorto
+        /*grafo.insertarVertice('A');
         grafo.insertarVertice('B');
         grafo.insertarVertice('C');
         grafo.insertarVertice('D');
@@ -28,7 +44,7 @@ public class TestGrafo {
         grafo.insertarArco('G', 'H', 0);
         System.out.println(grafo.toString());
         System.out.println(grafo.caminoMasCorto('A', 'H'));
-        System.out.println(grafo.toString());
+        System.out.println(grafo.toString());*/
     }
 
 }

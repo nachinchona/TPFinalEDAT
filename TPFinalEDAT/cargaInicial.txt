@@ -1,0 +1,111 @@
+E;Plaza Constitución;default;1642;Buenos Aires;7600;5;4
+E;H. Yrigoyen;default;1642;Buenos Aires;7600;5;4
+E;Lanús;default;1642;Buenos Aires;7600;5;4
+E;R. de Escalada;default;1642;Buenos Aires;7600;5;4
+E;Banfield;default;1642;Buenos Aires;7600;5;4
+E;Lomas de Zamora;default;1642;Buenos Aires;7600;5;4
+E;Temperley;default;1642;Buenos Aires;7600;5;4
+E;Turdera;default;1642;Buenos Aires;7600;5;4
+E;Ezeiza;default;1642;Buenos Aires;7600;5;4
+E;Tristán Suárez;default;1642;Buenos Aires;7600;5;4
+E;Máximo Paz;default;1642;Buenos Aires;7600;5;4
+E;Vicente Casares;default;1642;Buenos Aires;7600;5;4
+E;Cañuelas;default;1642;Buenos Aires;7600;5;4
+E;Sarandí;default;1642;Buenos Aires;7600;5;4
+E;Villa Dominico;default;1642;Buenos Aires;7600;5;4
+E;Wilde;default;1642;Buenos Aires;7600;5;4
+E;Don Bosco;default;1642;Buenos Aires;7600;5;4
+E;Bernal;default;1642;Buenos Aires;7600;5;4
+E;Quilmes;default;1642;Buenos Aires;7600;5;4
+E;Berazategui;default;1642;Buenos Aires;7600;5;4
+E;Plátanos;default;1642;Buenos Aires;7600;5;4
+E;Gonnet;default;1642;Buenos Aires;7600;5;4
+E;Tolosa;default;1642;Buenos Aires;7600;5;4
+E;La Plata;default;1642;Buenos Aires;7600;5;4
+E;Villa España;default;1642;Buenos Aires;7600;5;4
+E;Ranelagh;default;1642;Buenos Aires;7600;5;4
+E;Sourigues;default;1642;Buenos Aires;7600;5;4
+E;Bosques;default;1642;Buenos Aires;7600;5;4
+E;Gutiérrez;default;1642;Buenos Aires;7600;5;4
+E;Adrogué;default;1642;Buenos Aires;7600;5;4
+E;Burzaco;default;1642;Buenos Aires;7600;5;4
+E;Longchamps;default;1642;Buenos Aires;7600;5;4
+E;Glew;default;1642;Buenos Aires;7600;5;4
+E;Altamirano;default;1642;Buenos Aires;7600;5;4
+E;Chascomús;default;1642;Buenos Aires;7600;5;4
+E;Haedo;default;1642;Buenos Aires;7600;5;4
+E;Ing. Brian;default;1642;Buenos Aires;7600;5;4
+E;San Justo;default;1642;Buenos Aires;7600;5;4
+E;Km 34;default;1642;Buenos Aires;7600;5;4
+E;Santa Catalina;default;1642;Buenos Aires;7600;5;4
+E;Hospital Español;default;1642;Buenos Aires;7600;5;4
+R;H. Yrigoyen;Lanús;53
+R;Lanús;R. de Escalada;67
+R;R. de Escalada;Banfield;54
+R;Banfield;Lomas de Zamora;71
+R;Lomas de Zamora;Temperley;49
+R;Temperley;Turdera;59
+R;Turdera;Ezeiza;71
+R;Ezeiza;Tristán Suárez;63
+R;Tristán Suárez;Máximo Paz;51
+R;Máximo Paz;Vicente Casares;60
+R;Vicente Casares;Cañuelas;55
+R;Plaza Constitución;Sarandí;65
+R;Sarandí;Villa Dominico;60
+R;Villa Dominico;Wilde;53
+R;Wilde;Don Bosco;43
+R;Don Bosco;Bernal;71
+R;Plaza Constitución;H. Yrigoyen;61
+R;Bernal;Quilmes;89
+R;Quilmes;Berazategui;74
+R;Berazategui;Plátanos;71
+R;Plátanos;Gonnet;63
+R;Gonnet;Tolosa;53
+R;Tolosa;La Plata;57
+R;Berazategui;Villa España;48
+R;Villa España;Ranelagh;82
+R;Ranelagh;Sourigues;57
+R;Sourigues;Bosques;61
+R;Bosques;Gutiérrez;73
+R;Temperley;Adrogué;76
+R;Adrogué;Burzaco;61
+R;Burzaco;Longchamps;51
+R;Longchamps;Glew;49
+R;Glew;Altamirano;63
+R;Altamirano;Chascomús;71
+R;Haedo;Ing. Brian;49
+R;Ing. Brian;San Justo;53
+R;San Justo;Km 34;91
+R;Km 34;Santa Catalina;57
+R;Santa Catalina;Hospital Español;67
+R;Hospital Español;Temperley;83
+L;A;Haedo;Ing. Brian;San Justo;Km 34;Santa Catalina;Hospital Español;Temperley;Adrogué;Burzaco;Longchamps;Glew;Altamirano;Chascomús
+L;B;Plaza Constitución; H. Yrigoyen;Lanús;R. de Escalada;Banfield;Lomas de Zamora;Temperley;Turdera;Ezeiza;Tristán Suárez;Máximo Paz;Vicente Casares;Cañuelas
+L;C;Plaza Constitución;Sarandí;Villa Dominico;Wilde;Don Bosco;Bernal;Quilmes;Berazategui;Plátanos;Gonnet;Tolosa;La Plata;Villa España;Ranelagh;Sourigues;Bosques;Gutiérrez
+T;875;diesel;5;2;A
+T;253;fuel oil;4;3;B
+T;442;gasolina;5;1;C
+T;721;híbrido;3;0;A
+T;221;electricidad;6;3;libre
+T;558;diesel;5;5;C
+T;901;electricidad;5;4;A
+T;344;diesel;4;2;B
+T;621;electricidad;3;0;C
+T;726;fuel oil;5;1;A
+T;353;diesel;5;2;B
+T;321;gasolina;4;2;C
+T;820;electricidad;3;0;libre
+T;236;diesel;2;5;B
+T;891;gasolina;6;4;libre
+T;782;electricidad;4;2;A
+T;454;fuel oil;6;1;B
+T;821;híbrido;5;2;C
+T;917;fuel oil;4;1;A
+T;591;híbrido;5;1;B
+
+
+
+
+
+
+

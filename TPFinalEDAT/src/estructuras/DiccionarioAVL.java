@@ -106,22 +106,22 @@ public class DiccionarioAVL {
                 balanceAux = balance(nodo.getDerecho());
                 if (balanceAux == -1 || balanceAux == 0) {
                     //balance simple por izquierda
-                    this.raiz = rotacionIzq(null, nodo);
+                    this.raiz = rotacionIzq(nodo);
                 } else {
                     //balance doble derecha izquierda
-                    nodo.setDerecho(rotacionDer(nodo, nodo.getDerecho()));
-                    rotacionIzq(null, nodo);
+                    nodo.setDerecho(rotacionDer(nodo.getDerecho()));
+                    this.raiz = rotacionIzq(nodo);
                 }
                 break;
             case 2:
                 balanceAux = balance(nodo.getIzquierdo());
                 if (balanceAux == 1 || balanceAux == 0) {
                     //balance simple por derecha
-                    rotacionDer(null, nodo);
+                    this.raiz = rotacionDer(nodo);
                 } else {
                     //balance doble izquierda derecha
-                    nodo.setIzquierdo(rotacionIzq(nodo, nodo.getIzquierdo()));
-                    rotacionDer(null, nodo);
+                    nodo.setIzquierdo(rotacionIzq(nodo.getIzquierdo()));
+                    this.raiz = rotacionDer(nodo);
                 }
                 break;
         }
@@ -137,17 +137,17 @@ public class DiccionarioAVL {
                 if (balanceAux == -1 || balanceAux == 0) {
                     //balance simple por izquierda
                     if (padre.getClave().compareTo(nodo.getClave()) < 0) {
-                        padre.setDerecho(rotacionIzq(padre, nodo));
+                        padre.setDerecho(rotacionIzq(nodo));
                     } else {
-                        padre.setIzquierdo(rotacionIzq(padre, nodo));
+                        padre.setIzquierdo(rotacionIzq(nodo));
                     }
                 } else {
                     //balance doble derecha izquierda
-                    nodo.setDerecho(rotacionDer(nodo, nodo.getDerecho()));
+                    nodo.setDerecho(rotacionDer(nodo.getDerecho()));
                     if (padre.getClave().compareTo(nodo.getClave()) < 0) {
-                        padre.setDerecho(rotacionIzq(padre, nodo));
+                        padre.setDerecho(rotacionIzq(nodo));
                     } else {
-                        padre.setIzquierdo(rotacionIzq(padre, nodo));
+                        padre.setIzquierdo(rotacionIzq(nodo));
                     }
                 }
                 break;
@@ -156,52 +156,42 @@ public class DiccionarioAVL {
                 if (balanceAux == 1 || balanceAux == 0) {
                     //balance simple por izquierda
                     if (padre.getClave().compareTo(nodo.getClave()) < 0) {
-                        padre.setDerecho(rotacionDer(padre, nodo));
+                        padre.setDerecho(rotacionDer(nodo));
                     } else {
-                        padre.setIzquierdo(rotacionDer(padre, nodo));
+                        padre.setIzquierdo(rotacionDer(nodo));
                     }
                 } else {
                     //balance doble izquierda derecha
-                    nodo.setIzquierdo(rotacionIzq(nodo, nodo.getIzquierdo()));
+                    nodo.setIzquierdo(rotacionIzq(nodo.getIzquierdo()));
                     if (padre.getClave().compareTo(nodo.getClave()) < 0) {
-                        padre.setDerecho(rotacionDer(padre, nodo));
+                        padre.setDerecho(rotacionDer(nodo));
                     } else {
-                        padre.setIzquierdo(rotacionDer(padre, nodo));
+                        padre.setIzquierdo(rotacionDer(nodo));
                     }
                 }
                 break;
         }
     }
 
-    private NodoDiccAVL rotacionIzq(NodoDiccAVL padre, NodoDiccAVL r) {
+    private NodoDiccAVL rotacionIzq(NodoDiccAVL r) {
         NodoDiccAVL h;
-            h = r.getDerecho();
-            NodoDiccAVL temp = h.getIzquierdo();
-            h.setIzquierdo(r);
-            r.setDerecho(temp);
-            h.recalcularAltura();
-            r.recalcularAltura();
+        h = r.getDerecho();
+        NodoDiccAVL temp = h.getIzquierdo();
+        h.setIzquierdo(r);
+        r.setDerecho(temp);
+        h.recalcularAltura();
+        r.recalcularAltura();
         return h;
     }
 
-    private NodoDiccAVL rotacionDer(NodoDiccAVL padre, NodoDiccAVL r) {
+    private NodoDiccAVL rotacionDer(NodoDiccAVL r) {
         NodoDiccAVL h;
-        if (padre != null) {
-            h = r.getIzquierdo();
-            NodoDiccAVL temp = h.getDerecho();
-            h.setDerecho(r);
-            r.setIzquierdo(temp);
-            h.recalcularAltura();
-            r.recalcularAltura();
-        } else {
-            h = r.getIzquierdo();
-            NodoDiccAVL temp = h.getDerecho();
-            h.setDerecho(r);
-            r.setIzquierdo(temp);
-            this.raiz = h;
-            h.recalcularAltura();
-            r.recalcularAltura();
-        }
+        h = r.getIzquierdo();
+        NodoDiccAVL temp = h.getDerecho();
+        h.setDerecho(r);
+        r.setIzquierdo(temp);
+        h.recalcularAltura();
+        r.recalcularAltura();
         return h;
     }
 
@@ -210,6 +200,7 @@ public class DiccionarioAVL {
         if (this.raiz != null) {
             if (this.raiz.getClave().equals(elem)) {
                 exito = true;
+                System.out.println("aca");
                 eliminarRaiz(determinarCaso(this.raiz));
             } else {
                 exito = eliminarPR(null, this.raiz, elem);
@@ -294,6 +285,8 @@ public class DiccionarioAVL {
                         padreAux = aux;
                         aux = aux.getIzquierdo();
                     }
+                    System.out.println(padreAux.getClave());
+                    System.out.println(aux.getClave());
                     intercambiar(nodo, aux);
                     padreAux.setIzquierdo(aux.getDerecho());
                 }
@@ -335,6 +328,7 @@ public class DiccionarioAVL {
                 if (aux.getIzquierdo() == null) {
                     intercambiar(nodo, aux);
                     nodo.setDerecho(aux.getDerecho());
+                    balancear(padre, padreAux, balance(padreAux));
                 } else {
                     while (aux.getIzquierdo() != null) {
                         padreAux = aux;
@@ -342,6 +336,7 @@ public class DiccionarioAVL {
                     }
                     intercambiar(nodo, aux);
                     padreAux.setIzquierdo(aux.getDerecho());
+                    balancear(nodo, padreAux, balance(padreAux));
                 }
                 break;
         }

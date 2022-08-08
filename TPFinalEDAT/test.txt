@@ -1,0 +1,223 @@
+Inicio del log.
+
+INICIO CARGA INICIAL
+42 ESTACIONES 41 RIELES 3 LINEAS 20 TRENES
+La estación Plaza Constitución;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación H. Yrigoyen;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Lanús;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación R. de Escalada;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Banfield;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Lomas de Zamora;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Temperley;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Turdera;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Ezeiza;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Tristán Suárez;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Máximo Paz;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Vicente Casares;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Cañuelas;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Sarandí;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Villa Dominico;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Wilde;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Don Bosco;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Bernal;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Quilmes;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Berazategui;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Plátanos;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Gonnet;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Tolosa;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación La Plata;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Villa España;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Ranelagh;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Sourigues;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Bosques;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Gutiérrez;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Adrogué;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Burzaco;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Longchamps;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Glew;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Altamirano;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Chascomús;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Haedo;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Ing. Brian;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación San Justo;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Km 34;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Santa Catalina;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+La estación Hospital Español;default;1642;Buenos Aires;7600;5;4 ha sido agregada con éxito.
+El riel H. Yrigoyen;Lanús;53 ha sido agregado con éxito.
+El riel Lanús;R. de Escalada;67 ha sido agregado con éxito.
+El riel R. de Escalada;Banfield;54 ha sido agregado con éxito.
+El riel Banfield;Lomas de Zamora;71 ha sido agregado con éxito.
+El riel Lomas de Zamora;Temperley;49 ha sido agregado con éxito.
+El riel Temperley;Turdera;59 ha sido agregado con éxito.
+El riel Turdera;Ezeiza;71 ha sido agregado con éxito.
+El riel Ezeiza;Tristán Suárez;63 ha sido agregado con éxito.
+El riel Tristán Suárez;Máximo Paz;51 ha sido agregado con éxito.
+El riel Máximo Paz;Vicente Casares;60 ha sido agregado con éxito.
+El riel Vicente Casares;Cañuelas;55 ha sido agregado con éxito.
+El riel Plaza Constitución;Sarandí;65 ha sido agregado con éxito.
+El riel Sarandí;Villa Dominico;60 ha sido agregado con éxito.
+El riel Villa Dominico;Wilde;53 ha sido agregado con éxito.
+El riel Wilde;Don Bosco;43 ha sido agregado con éxito.
+El riel Don Bosco;Bernal;71 ha sido agregado con éxito.
+El riel Plaza Constitución;H. Yrigoyen;61 ha sido agregado con éxito.
+El riel Bernal;Quilmes;89 ha sido agregado con éxito.
+El riel Quilmes;Berazategui;74 ha sido agregado con éxito.
+El riel Berazategui;Plátanos;71 ha sido agregado con éxito.
+El riel Plátanos;Gonnet;63 ha sido agregado con éxito.
+El riel Gonnet;Tolosa;53 ha sido agregado con éxito.
+El riel Tolosa;La Plata;57 ha sido agregado con éxito.
+El riel Berazategui;Villa España;48 ha sido agregado con éxito.
+El riel Villa España;Ranelagh;82 ha sido agregado con éxito.
+El riel Ranelagh;Sourigues;57 ha sido agregado con éxito.
+El riel Sourigues;Bosques;61 ha sido agregado con éxito.
+El riel Bosques;Gutiérrez;73 ha sido agregado con éxito.
+El riel Temperley;Adrogué;76 ha sido agregado con éxito.
+El riel Adrogué;Burzaco;61 ha sido agregado con éxito.
+El riel Burzaco;Longchamps;51 ha sido agregado con éxito.
+El riel Longchamps;Glew;49 ha sido agregado con éxito.
+El riel Glew;Altamirano;63 ha sido agregado con éxito.
+El riel Altamirano;Chascomús;71 ha sido agregado con éxito.
+El riel Haedo;Ing. Brian;49 ha sido agregado con éxito.
+El riel Ing. Brian;San Justo;53 ha sido agregado con éxito.
+El riel San Justo;Km 34;91 ha sido agregado con éxito.
+El riel Km 34;Santa Catalina;57 ha sido agregado con éxito.
+El riel Santa Catalina;Hospital Español;67 ha sido agregado con éxito.
+El riel Hospital Español;Temperley;83 ha sido agregado con éxito.
+La línea A ha sido agregada con éxito. Estaciones: Haedo;default;1642;Buenos Aires;7600;5;4, Ing. Brian;default;1642;Buenos Aires;7600;5;4, San Justo;default;1642;Buenos Aires;7600;5;4, Km 34;default;1642;Buenos Aires;7600;5;4, Santa Catalina;default;1642;Buenos Aires;7600;5;4, Hospital Español;default;1642;Buenos Aires;7600;5;4, Temperley;default;1642;Buenos Aires;7600;5;4, Adrogué;default;1642;Buenos Aires;7600;5;4, Burzaco;default;1642;Buenos Aires;7600;5;4, Longchamps;default;1642;Buenos Aires;7600;5;4, Glew;default;1642;Buenos Aires;7600;5;4, Altamirano;default;1642;Buenos Aires;7600;5;4
+La línea B ha sido agregada con éxito. Estaciones: Plaza Constitución;default;1642;Buenos Aires;7600;5;4, Lanús;default;1642;Buenos Aires;7600;5;4, R. de Escalada;default;1642;Buenos Aires;7600;5;4, Banfield;default;1642;Buenos Aires;7600;5;4, Lomas de Zamora;default;1642;Buenos Aires;7600;5;4, Temperley;default;1642;Buenos Aires;7600;5;4, Turdera;default;1642;Buenos Aires;7600;5;4, Ezeiza;default;1642;Buenos Aires;7600;5;4, Tristán Suárez;default;1642;Buenos Aires;7600;5;4, Máximo Paz;default;1642;Buenos Aires;7600;5;4, Vicente Casares;default;1642;Buenos Aires;7600;5;4
+La línea C ha sido agregada con éxito. Estaciones: Plaza Constitución;default;1642;Buenos Aires;7600;5;4, Sarandí;default;1642;Buenos Aires;7600;5;4, Villa Dominico;default;1642;Buenos Aires;7600;5;4, Wilde;default;1642;Buenos Aires;7600;5;4, Don Bosco;default;1642;Buenos Aires;7600;5;4, Bernal;default;1642;Buenos Aires;7600;5;4, Quilmes;default;1642;Buenos Aires;7600;5;4, Berazategui;default;1642;Buenos Aires;7600;5;4, Plátanos;default;1642;Buenos Aires;7600;5;4, Gonnet;default;1642;Buenos Aires;7600;5;4, Tolosa;default;1642;Buenos Aires;7600;5;4, La Plata;default;1642;Buenos Aires;7600;5;4, Villa España;default;1642;Buenos Aires;7600;5;4, Ranelagh;default;1642;Buenos Aires;7600;5;4, Sourigues;default;1642;Buenos Aires;7600;5;4, Bosques;default;1642;Buenos Aires;7600;5;4
+El tren 875;diesel;5;2;A ha sido agregado con éxito.
+El tren 253;fuel oil;4;3;B ha sido agregado con éxito.
+El tren 442;gasolina;5;1;C ha sido agregado con éxito.
+El tren 721;híbrido;3;0;A ha sido agregado con éxito.
+El tren 221;electricidad;6;3;libre ha sido agregado con éxito.
+El tren 558;diesel;5;5;C ha sido agregado con éxito.
+El tren 901;electricidad;5;4;A ha sido agregado con éxito.
+El tren 344;diesel;4;2;B ha sido agregado con éxito.
+El tren 621;electricidad;3;0;C ha sido agregado con éxito.
+El tren 726;fuel oil;5;1;A ha sido agregado con éxito.
+El tren 353;diesel;5;2;B ha sido agregado con éxito.
+El tren 321;gasolina;4;2;C ha sido agregado con éxito.
+El tren 820;electricidad;3;0;libre ha sido agregado con éxito.
+El tren 236;diesel;2;5;B ha sido agregado con éxito.
+El tren 891;gasolina;6;4;libre ha sido agregado con éxito.
+El tren 782;electricidad;4;2;A ha sido agregado con éxito.
+El tren 454;fuel oil;6;1;B ha sido agregado con éxito.
+El tren 821;híbrido;5;2;C ha sido agregado con éxito.
+El tren 917;fuel oil;4;1;A ha sido agregado con éxito.
+El tren 591;híbrido;5;1;B ha sido agregado con éxito.
+
+FIN CARGA INICIAL
+
+Estaciones:
+Plaza Constitución altura: 5, H.I: Ezeiza, H.D: Temperley
+Ezeiza altura: 4, H.I: Bernal, H.D: Ing. Brian
+Bernal altura: 3, H.I: Banfield, H.D: Cañuelas
+Banfield altura: 2, H.I: Adrogué, H.D: Berazategui
+Adrogué altura: 1, H.I: -, H.D: Altamirano
+Altamirano altura: 0, H.I: -, H.D: -
+Berazategui altura: 0, H.I: -, H.D: -
+Cañuelas altura: 2, H.I: Bosques, H.D: Don Bosco
+Bosques altura: 1, H.I: -, H.D: Burzaco
+Burzaco altura: 0, H.I: -, H.D: -
+Don Bosco altura: 1, H.I: Chascomús, H.D: -
+Chascomús altura: 0, H.I: -, H.D: -
+Ing. Brian altura: 3, H.I: H. Yrigoyen, H.D: Lanús
+H. Yrigoyen altura: 2, H.I: Gonnet, H.D: Haedo
+Gonnet altura: 1, H.I: Glew, H.D: Gutiérrez
+Glew altura: 0, H.I: -, H.D: -
+Gutiérrez altura: 0, H.I: -, H.D: -
+Haedo altura: 1, H.I: -, H.D: Hospital Español
+Hospital Español altura: 0, H.I: -, H.D: -
+Lanús altura: 2, H.I: La Plata, H.D: Longchamps
+La Plata altura: 1, H.I: Km 34, H.D: -
+Km 34 altura: 0, H.I: -, H.D: -
+Longchamps altura: 1, H.I: Lomas de Zamora, H.D: Máximo Paz
+Lomas de Zamora altura: 0, H.I: -, H.D: -
+Máximo Paz altura: 0, H.I: -, H.D: -
+Temperley altura: 4, H.I: R. de Escalada, H.D: Turdera
+R. de Escalada altura: 3, H.I: Quilmes, H.D: Sarandí
+Quilmes altura: 1, H.I: Plátanos, H.D: -
+Plátanos altura: 0, H.I: -, H.D: -
+Sarandí altura: 2, H.I: San Justo, H.D: Sourigues
+San Justo altura: 1, H.I: Ranelagh, H.D: Santa Catalina
+Ranelagh altura: 0, H.I: -, H.D: -
+Santa Catalina altura: 0, H.I: -, H.D: -
+Sourigues altura: 0, H.I: -, H.D: -
+Turdera altura: 3, H.I: Tristán Suárez, H.D: Villa Dominico
+Tristán Suárez altura: 1, H.I: Tolosa, H.D: -
+Tolosa altura: 0, H.I: -, H.D: -
+Villa Dominico altura: 2, H.I: Vicente Casares, H.D: Wilde
+Vicente Casares altura: 0, H.I: -, H.D: -
+Wilde altura: 1, H.I: Villa España, H.D: -
+Villa España altura: 0, H.I: -, H.D: -
+
+Trenes:
+442 altura: 4, H.I: 253, H.D: 782
+253 altura: 2, H.I: 221, H.D: 344
+221 altura: 1, H.I: -, H.D: 236
+236 altura: 0, H.I: -, H.D: -
+344 altura: 1, H.I: 321, H.D: 353
+321 altura: 0, H.I: -, H.D: -
+353 altura: 0, H.I: -, H.D: -
+782 altura: 3, H.I: 621, H.D: 875
+621 altura: 2, H.I: 558, H.D: 721
+558 altura: 1, H.I: 454, H.D: 591
+454 altura: 0, H.I: -, H.D: -
+591 altura: 0, H.I: -, H.D: -
+721 altura: 1, H.I: -, H.D: 726
+726 altura: 0, H.I: -, H.D: -
+875 altura: 2, H.I: 820, H.D: 901
+820 altura: 1, H.I: -, H.D: 821
+821 altura: 0, H.I: -, H.D: -
+901 altura: 1, H.I: 891, H.D: 917
+891 altura: 0, H.I: -, H.D: -
+917 altura: 0, H.I: -, H.D: -
+
+Rieles:
+Vertice: Hospital Español;default;1642;Buenos Aires;7600;5;4 ady: Santa Catalina;default;1642;Buenos Aires;7600;5;4, Temperley;default;1642;Buenos Aires;7600;5;4
+Vertice: Santa Catalina;default;1642;Buenos Aires;7600;5;4 ady: Km 34;default;1642;Buenos Aires;7600;5;4, Hospital Español;default;1642;Buenos Aires;7600;5;4
+Vertice: Km 34;default;1642;Buenos Aires;7600;5;4 ady: San Justo;default;1642;Buenos Aires;7600;5;4, Santa Catalina;default;1642;Buenos Aires;7600;5;4
+Vertice: San Justo;default;1642;Buenos Aires;7600;5;4 ady: Ing. Brian;default;1642;Buenos Aires;7600;5;4, Km 34;default;1642;Buenos Aires;7600;5;4
+Vertice: Ing. Brian;default;1642;Buenos Aires;7600;5;4 ady: Haedo;default;1642;Buenos Aires;7600;5;4, San Justo;default;1642;Buenos Aires;7600;5;4
+Vertice: Haedo;default;1642;Buenos Aires;7600;5;4 ady: Ing. Brian;default;1642;Buenos Aires;7600;5;4
+Vertice: Chascomús;default;1642;Buenos Aires;7600;5;4 ady: Altamirano;default;1642;Buenos Aires;7600;5;4
+Vertice: Altamirano;default;1642;Buenos Aires;7600;5;4 ady: Glew;default;1642;Buenos Aires;7600;5;4, Chascomús;default;1642;Buenos Aires;7600;5;4
+Vertice: Glew;default;1642;Buenos Aires;7600;5;4 ady: Longchamps;default;1642;Buenos Aires;7600;5;4, Altamirano;default;1642;Buenos Aires;7600;5;4
+Vertice: Longchamps;default;1642;Buenos Aires;7600;5;4 ady: Burzaco;default;1642;Buenos Aires;7600;5;4, Glew;default;1642;Buenos Aires;7600;5;4
+Vertice: Burzaco;default;1642;Buenos Aires;7600;5;4 ady: Adrogué;default;1642;Buenos Aires;7600;5;4, Longchamps;default;1642;Buenos Aires;7600;5;4
+Vertice: Adrogué;default;1642;Buenos Aires;7600;5;4 ady: Temperley;default;1642;Buenos Aires;7600;5;4, Burzaco;default;1642;Buenos Aires;7600;5;4
+Vertice: Gutiérrez;default;1642;Buenos Aires;7600;5;4 ady: Bosques;default;1642;Buenos Aires;7600;5;4
+Vertice: Bosques;default;1642;Buenos Aires;7600;5;4 ady: Sourigues;default;1642;Buenos Aires;7600;5;4, Gutiérrez;default;1642;Buenos Aires;7600;5;4
+Vertice: Sourigues;default;1642;Buenos Aires;7600;5;4 ady: Ranelagh;default;1642;Buenos Aires;7600;5;4, Bosques;default;1642;Buenos Aires;7600;5;4
+Vertice: Ranelagh;default;1642;Buenos Aires;7600;5;4 ady: Villa España;default;1642;Buenos Aires;7600;5;4, Sourigues;default;1642;Buenos Aires;7600;5;4
+Vertice: Villa España;default;1642;Buenos Aires;7600;5;4 ady: Berazategui;default;1642;Buenos Aires;7600;5;4, Ranelagh;default;1642;Buenos Aires;7600;5;4
+Vertice: La Plata;default;1642;Buenos Aires;7600;5;4 ady: Tolosa;default;1642;Buenos Aires;7600;5;4
+Vertice: Tolosa;default;1642;Buenos Aires;7600;5;4 ady: Gonnet;default;1642;Buenos Aires;7600;5;4, La Plata;default;1642;Buenos Aires;7600;5;4
+Vertice: Gonnet;default;1642;Buenos Aires;7600;5;4 ady: Plátanos;default;1642;Buenos Aires;7600;5;4, Tolosa;default;1642;Buenos Aires;7600;5;4
+Vertice: Plátanos;default;1642;Buenos Aires;7600;5;4 ady: Berazategui;default;1642;Buenos Aires;7600;5;4, Gonnet;default;1642;Buenos Aires;7600;5;4
+Vertice: Berazategui;default;1642;Buenos Aires;7600;5;4 ady: Quilmes;default;1642;Buenos Aires;7600;5;4, Plátanos;default;1642;Buenos Aires;7600;5;4, Villa España;default;1642;Buenos Aires;7600;5;4
+Vertice: Quilmes;default;1642;Buenos Aires;7600;5;4 ady: Bernal;default;1642;Buenos Aires;7600;5;4, Berazategui;default;1642;Buenos Aires;7600;5;4
+Vertice: Bernal;default;1642;Buenos Aires;7600;5;4 ady: Don Bosco;default;1642;Buenos Aires;7600;5;4, Quilmes;default;1642;Buenos Aires;7600;5;4
+Vertice: Don Bosco;default;1642;Buenos Aires;7600;5;4 ady: Wilde;default;1642;Buenos Aires;7600;5;4, Bernal;default;1642;Buenos Aires;7600;5;4
+Vertice: Wilde;default;1642;Buenos Aires;7600;5;4 ady: Villa Dominico;default;1642;Buenos Aires;7600;5;4, Don Bosco;default;1642;Buenos Aires;7600;5;4
+Vertice: Villa Dominico;default;1642;Buenos Aires;7600;5;4 ady: Sarandí;default;1642;Buenos Aires;7600;5;4, Wilde;default;1642;Buenos Aires;7600;5;4
+Vertice: Sarandí;default;1642;Buenos Aires;7600;5;4 ady: Plaza Constitución;default;1642;Buenos Aires;7600;5;4, Villa Dominico;default;1642;Buenos Aires;7600;5;4
+Vertice: Cañuelas;default;1642;Buenos Aires;7600;5;4 ady: Vicente Casares;default;1642;Buenos Aires;7600;5;4
+Vertice: Vicente Casares;default;1642;Buenos Aires;7600;5;4 ady: Máximo Paz;default;1642;Buenos Aires;7600;5;4, Cañuelas;default;1642;Buenos Aires;7600;5;4
+Vertice: Máximo Paz;default;1642;Buenos Aires;7600;5;4 ady: Tristán Suárez;default;1642;Buenos Aires;7600;5;4, Vicente Casares;default;1642;Buenos Aires;7600;5;4
+Vertice: Tristán Suárez;default;1642;Buenos Aires;7600;5;4 ady: Ezeiza;default;1642;Buenos Aires;7600;5;4, Máximo Paz;default;1642;Buenos Aires;7600;5;4
+Vertice: Ezeiza;default;1642;Buenos Aires;7600;5;4 ady: Turdera;default;1642;Buenos Aires;7600;5;4, Tristán Suárez;default;1642;Buenos Aires;7600;5;4
+Vertice: Turdera;default;1642;Buenos Aires;7600;5;4 ady: Temperley;default;1642;Buenos Aires;7600;5;4, Ezeiza;default;1642;Buenos Aires;7600;5;4
+Vertice: Temperley;default;1642;Buenos Aires;7600;5;4 ady: Lomas de Zamora;default;1642;Buenos Aires;7600;5;4, Turdera;default;1642;Buenos Aires;7600;5;4, Adrogué;default;1642;Buenos Aires;7600;5;4, Hospital Español;default;1642;Buenos Aires;7600;5;4
+Vertice: Lomas de Zamora;default;1642;Buenos Aires;7600;5;4 ady: Banfield;default;1642;Buenos Aires;7600;5;4, Temperley;default;1642;Buenos Aires;7600;5;4
+Vertice: Banfield;default;1642;Buenos Aires;7600;5;4 ady: R. de Escalada;default;1642;Buenos Aires;7600;5;4, Lomas de Zamora;default;1642;Buenos Aires;7600;5;4
+Vertice: R. de Escalada;default;1642;Buenos Aires;7600;5;4 ady: Lanús;default;1642;Buenos Aires;7600;5;4, Banfield;default;1642;Buenos Aires;7600;5;4
+Vertice: Lanús;default;1642;Buenos Aires;7600;5;4 ady: H. Yrigoyen;default;1642;Buenos Aires;7600;5;4, R. de Escalada;default;1642;Buenos Aires;7600;5;4
+Vertice: H. Yrigoyen;default;1642;Buenos Aires;7600;5;4 ady: Lanús;default;1642;Buenos Aires;7600;5;4, Plaza Constitución;default;1642;Buenos Aires;7600;5;4
+Vertice: Plaza Constitución;default;1642;Buenos Aires;7600;5;4 ady: Sarandí;default;1642;Buenos Aires;7600;5;4, H. Yrigoyen;default;1642;Buenos Aires;7600;5;4
+
+Líneas:
+{A=Haedo;default;1642;Buenos Aires;7600;5;4, Ing. Brian;default;1642;Buenos Aires;7600;5;4, San Justo;default;1642;Buenos Aires;7600;5;4, Km 34;default;1642;Buenos Aires;7600;5;4, Santa Catalina;default;1642;Buenos Aires;7600;5;4, Hospital Español;default;1642;Buenos Aires;7600;5;4, Temperley;default;1642;Buenos Aires;7600;5;4, Adrogué;default;1642;Buenos Aires;7600;5;4, Burzaco;default;1642;Buenos Aires;7600;5;4, Longchamps;default;1642;Buenos Aires;7600;5;4, Glew;default;1642;Buenos Aires;7600;5;4, Altamirano;default;1642;Buenos Aires;7600;5;4, B=Plaza Constitución;default;1642;Buenos Aires;7600;5;4, Lanús;default;1642;Buenos Aires;7600;5;4, R. de Escalada;default;1642;Buenos Aires;7600;5;4, Banfield;default;1642;Buenos Aires;7600;5;4, Lomas de Zamora;default;1642;Buenos Aires;7600;5;4, Temperley;default;1642;Buenos Aires;7600;5;4, Turdera;default;1642;Buenos Aires;7600;5;4, Ezeiza;default;1642;Buenos Aires;7600;5;4, Tristán Suárez;default;1642;Buenos Aires;7600;5;4, Máximo Paz;default;1642;Buenos Aires;7600;5;4, Vicente Casares;default;1642;Buenos Aires;7600;5;4, C=Plaza Constitución;default;1642;Buenos Aires;7600;5;4, Sarandí;default;1642;Buenos Aires;7600;5;4, Villa Dominico;default;1642;Buenos Aires;7600;5;4, Wilde;default;1642;Buenos Aires;7600;5;4, Don Bosco;default;1642;Buenos Aires;7600;5;4, Bernal;default;1642;Buenos Aires;7600;5;4, Quilmes;default;1642;Buenos Aires;7600;5;4, Berazategui;default;1642;Buenos Aires;7600;5;4, Plátanos;default;1642;Buenos Aires;7600;5;4, Gonnet;default;1642;Buenos Aires;7600;5;4, Tolosa;default;1642;Buenos Aires;7600;5;4, La Plata;default;1642;Buenos Aires;7600;5;4, Villa España;default;1642;Buenos Aires;7600;5;4, Ranelagh;default;1642;Buenos Aires;7600;5;4, Sourigues;default;1642;Buenos Aires;7600;5;4, Bosques;default;1642;Buenos Aires;7600;5;4}
+
+Fin del log.
